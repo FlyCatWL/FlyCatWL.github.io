@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>blogWorkFlow.md</title>
-    <link href="/2022/11/24/blogWorkFlow-md/"/>
-    <url>/2022/11/24/blogWorkFlow-md/</url>
+    <title></title>
+    <link href="/2022/11/24/Foc-Control-%E8%87%AA%E4%B8%BE%E7%94%B5%E5%AE%B9%E4%BD%9C%E7%94%A8%E5%88%86%E6%9E%90/"/>
+    <url>/2022/11/24/Foc-Control-%E8%87%AA%E4%B8%BE%E7%94%B5%E5%AE%B9%E4%BD%9C%E7%94%A8%E5%88%86%E6%9E%90/</url>
     
-    <content type="html"><![CDATA[<p>创建新的blog : hexo new “BlogName”<br>github发布:    hexo g &amp;&amp; hexo d</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="自举电容"><a href="#自举电容" class="headerlink" title="自举电容"></a>自举电容</h1><h2 id="1-原理"><a href="#1-原理" class="headerlink" title="1.原理"></a>1.原理</h2><p>​自居电容的原理是：电容两端的电压不能突变。</p><p>​<em>不能突变则指电容两端电压变化时，必然需要一个放电或者充电的过程时间</em></p><p><em>根据电容的公式I&#x3D;C</em>dU&#x2F;dt，得知，dU&#x2F;dt&#x3D;I&#x2F;C，故电容两端电压从0V上升到VDD时，取决于电流和电容的比值。<strong>容值一定时，电流越大，电压上升越快。电流一定时，容值越小，电压上升越快</strong>。</p><h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><p><img src="C:\Users\wulei\AppData\Roaming\Typora\typora-user-images\image-20221124133417920.png" alt="image-20221124133417920"></p><p><strong>利用该电路将VOUT输出一个+10V的电压</strong></p><ol><li>VCC为+5V时，K1断开，K2闭合，NMOS导通。通过二极管电容开始充电过程，VOUT输出为+5V。</li><li>K1闭合，K2断开，NMOS关闭，电容原接地引脚电平抬升至+5V，此时VOUT为+10V，二极管反向截止。</li></ol><h2 id="3-应用"><a href="#3-应用" class="headerlink" title="3.应用"></a>3.应用</h2><h3 id="3-1-电源-Todo"><a href="#3-1-电源-Todo" class="headerlink" title="3.1 电源(Todo)"></a>3.1 电源(Todo)</h3><h3 id="3-2-电机驱动"><a href="#3-2-电机驱动" class="headerlink" title="3.2 电机驱动"></a>3.2 电机驱动</h3><p><img src="C:\Users\wulei\AppData\Roaming\Typora\typora-user-images\image-20221124145021102.png" alt="image-20221124145021102"></p><p><strong>组成</strong></p><p>(1) 自举升压泵控制电路，CFT1、CFT2、CBOOT</p><p>(2) 电平转换控制(半桥驱动)电路 DFT1、DFT2</p><p><strong>升压过程</strong></p><p>(1) 升压泵控制器控制CFT1关闭、CFT2开启，自举电容CBOOT完成充电过程。</p><p>(2) 升压泵控制器控制CFT1开启、CFT2关闭，CPH点电压抬升，经上方二极管，VCP电压抬升。</p><p>(3) 电平转换电路控制DFT1开启、DFT2关闭，上桥臂GS大于开启阈值导通。</p><h2 id="4-选型计算"><a href="#4-选型计算" class="headerlink" title="4.选型计算"></a>4.选型计算</h2><p><a href="https://zhuanlan.zhihu.com/p/572081606">一文说透自举电路：工作原理及自举电阻和电容的选取 - 知乎 (zhihu.com)</a></p>]]></content>
     
     
     
@@ -18,8 +18,8 @@
   
   <entry>
     <title>blogWorkFlow.md</title>
-    <link href="/2022/11/24/Foc-Control-%E8%87%AA%E4%B8%BE%E7%94%B5%E5%AE%B9%E4%BD%9C%E7%94%A8/"/>
-    <url>/2022/11/24/Foc-Control-%E8%87%AA%E4%B8%BE%E7%94%B5%E5%AE%B9%E4%BD%9C%E7%94%A8/</url>
+    <link href="/2022/11/24/blogWorkFlow/"/>
+    <url>/2022/11/24/blogWorkFlow/</url>
     
     <content type="html"><![CDATA[<p>创建新的blog : hexo new “BlogName”<br>github发布:    hexo g &amp;&amp; hexo d</p>]]></content>
     
