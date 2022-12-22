@@ -5,10 +5,10 @@
   
   <entry>
     <title>SVPWM</title>
-    <link href="/2022/11/25/SVPWM/"/>
-    <url>/2022/11/25/SVPWM/</url>
+    <link href="/2022/11/25/Foc/Control/SVPWM/"/>
+    <url>/2022/11/25/Foc/Control/SVPWM/</url>
     
-    <content type="html"><![CDATA[<h2 id="1-SVPWM原理"><a href="#1-SVPWM原理" class="headerlink" title="1.SVPWM原理"></a>1.SVPWM原理</h2><h2 id="2-SVPWM实现步骤"><a href="#2-SVPWM实现步骤" class="headerlink" title="2.SVPWM实现步骤"></a>2.SVPWM实现步骤</h2><h3 id="2-1扇区划分"><a href="#2-1扇区划分" class="headerlink" title="2.1扇区划分"></a>2.1扇区划分</h3><h3 id="2-2扇区判断"><a href="#2-2扇区判断" class="headerlink" title="2.2扇区判断"></a>2.2扇区判断</h3><h3 id="2-3逆变切换时间"><a href="#2-3逆变切换时间" class="headerlink" title="2.3逆变切换时间"></a>2.3逆变切换时间</h3>]]></content>
+    <content type="html"><![CDATA[<h2 id="1-SVPWM原理"><a href="#1-SVPWM原理" class="headerlink" title="1.SVPWM原理"></a>1.SVPWM原理</h2><p>​矢量控制的数学模型，目的是在空间中合成圆形恒定的旋转磁链(磁场)，即合成一个恒定大小的旋转电压矢量。</p><h2 id="2-SVPWM实现步骤"><a href="#2-SVPWM实现步骤" class="headerlink" title="2.SVPWM实现步骤"></a>2.SVPWM实现步骤</h2><h3 id="2-1扇区划分"><a href="#2-1扇区划分" class="headerlink" title="2.1扇区划分"></a>2.1扇区划分</h3><h3 id="2-2扇区判断"><a href="#2-2扇区判断" class="headerlink" title="2.2扇区判断"></a>2.2扇区判断</h3><h3 id="2-3逆变切换时间"><a href="#2-3逆变切换时间" class="headerlink" title="2.3逆变切换时间"></a>2.3逆变切换时间</h3>]]></content>
     
     
     
