@@ -16,17 +16,24 @@
   <meta name="author" content="Miao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.SVPWM原理​	矢量控制的数学模型，目的是在空间中合成圆形恒定的旋转磁链(磁场)，即合成一个恒定大小的旋转电压矢量。 2.SVPWM实现步骤2.1扇区划分2.2扇区判断2.3逆变切换时间">
+    <meta name="description" content="1.SVPWM原理矢量控制的数学模型，目的是在空间中合成圆形恒定的旋转磁链(磁场)，即合成一个恒定大小的旋转电压矢量。SVPWM进行电压调制的理论基础是平均值等效原理，即在一个开关周期内通过对基本电压矢量加以组合，使平均值与给定电压矢量相等。 在电机旋转过程中的任意时刻，电压矢量旋转到某个区域中，可由组成这个区域的两个相邻的非零矢量和零矢量在时间上的不同组合来得到。两个矢量的作用时间在一个采样周期">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVPWM">
 <meta property="og:url" content="http://example.com/2022/11/25/Foc/Control/SVPWM/index.html">
 <meta property="og:site_name" content="FlyCat">
-<meta property="og:description" content="1.SVPWM原理​	矢量控制的数学模型，目的是在空间中合成圆形恒定的旋转磁链(磁场)，即合成一个恒定大小的旋转电压矢量。 2.SVPWM实现步骤2.1扇区划分2.2扇区判断2.3逆变切换时间">
+<meta property="og:description" content="1.SVPWM原理矢量控制的数学模型，目的是在空间中合成圆形恒定的旋转磁链(磁场)，即合成一个恒定大小的旋转电压矢量。SVPWM进行电压调制的理论基础是平均值等效原理，即在一个开关周期内通过对基本电压矢量加以组合，使平均值与给定电压矢量相等。 在电机旋转过程中的任意时刻，电压矢量旋转到某个区域中，可由组成这个区域的两个相邻的非零矢量和零矢量在时间上的不同组合来得到。两个矢量的作用时间在一个采样周期">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222150159954.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222155550389.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222161217903.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222165510174.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222164632267.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222165944965.png">
 <meta property="article:published_time" content="2022-11-25T07:20:59.000Z">
-<meta property="article:modified_time" content="2022-12-22T06:39:12.334Z">
+<meta property="article:modified_time" content="2022-12-22T09:02:19.955Z">
 <meta property="article:author" content="Miao">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222150159954.png">
   
   
   <title>SVPWM - FlyCat</title>
@@ -196,7 +203,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      94 字
+      826 字
     </span>
   
 
@@ -205,7 +212,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      7 分钟
     </span>
   
 
@@ -237,8 +244,34 @@
             <h1 style="display: none">SVPWM</h1>
             
             <div class="markdown-body">
-              <h2 id="1-SVPWM原理"><a href="#1-SVPWM原理" class="headerlink" title="1.SVPWM原理"></a>1.SVPWM原理</h2><p>​	矢量控制的数学模型，目的是在空间中合成圆形恒定的旋转磁链(磁场)，即合成一个恒定大小的旋转电压矢量。</p>
-<h2 id="2-SVPWM实现步骤"><a href="#2-SVPWM实现步骤" class="headerlink" title="2.SVPWM实现步骤"></a>2.SVPWM实现步骤</h2><h3 id="2-1扇区划分"><a href="#2-1扇区划分" class="headerlink" title="2.1扇区划分"></a>2.1扇区划分</h3><h3 id="2-2扇区判断"><a href="#2-2扇区判断" class="headerlink" title="2.2扇区判断"></a>2.2扇区判断</h3><h3 id="2-3逆变切换时间"><a href="#2-3逆变切换时间" class="headerlink" title="2.3逆变切换时间"></a>2.3逆变切换时间</h3>
+              <h2 id="1-SVPWM原理"><a href="#1-SVPWM原理" class="headerlink" title="1.SVPWM原理"></a>1.SVPWM原理</h2><p>矢量控制的数学模型，目的是在空间中合成圆形恒定的旋转磁链(磁场)，即合成一个恒定大小的旋转电压矢量。SVPWM进行电压调制的理论基础是<strong>平均值等效原理</strong>，即在一个开关周期内通过对基本电压矢量加以组合，使平均值与给定电压矢量相等。</p>
+<p>在电机旋转过程中的任意时刻，电压矢量旋转到某个区域中，可由组成这个区域的两个相邻的非零矢量和零矢量在时间上的不同组合来得到。两个矢量的作用时间在一个采样周期内分多次施加，从而控制各个电压矢量的作用时间，使电压空间矢量接近按圆轨迹旋转，通过逆变器的不同开关状态所产生的实际磁通去逼近理想磁通圆，并由两者的比较结果来决定逆变器的开关状态，从而形成PWM 波形。</p>
+<h2 id="2-SVPWM实现步骤"><a href="#2-SVPWM实现步骤" class="headerlink" title="2.SVPWM实现步骤"></a>2.SVPWM实现步骤</h2><h3 id="2-1扇区划分"><a href="#2-1扇区划分" class="headerlink" title="2.1扇区划分"></a>2.1扇区划分</h3><p><img src="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222150159954.png" srcset="/img/loading.gif" lazyload alt="image-20221222150159954"></p>
+<p>设定母线电压为Udc，逆变器输出的相电压为Ua、Ub、Uc，其分别加在空间互差120°的三相静止坐标系上。可以定义三个电压空间矢量 UA(t)、UB(t)、UC(t)，它们的方向始终在各相的轴线上，而大小则随时间按正弦规律做变化，时间相位互差120°。</p>
+<p>假设Um为相电压有效值，f为电源频率，则有：</p>
+<p>​	{</p>
+<p>​		Ua(t) &#x3D; Um cos(θ)</p>
+<p>​		Ub(t) &#x3D; Um cos(θ - 2π&#x2F;3)</p>
+<p>​		Uc(t) &#x3D; Um cos(θ - 2π&#x2F;3)</p>
+<p>​	}</p>
+<p>其中，θ &#x3D; 2πft，则三相电压空间矢量叠加后的矢量U(t)可以表示为：</p>
+<img src="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222155550389.png" srcset="/img/loading.gif" lazyload alt="image-20221222155550389" style="zoom:25%;" />
+
+<p>可见Ut是一个旋转矢量，幅值为相电压峰值的1.5倍，其在三相坐标轴(a, b, c)上的投影就是对称的三相正弦分量。</p>
+<p>逆变电路的三相桥臂共有6个可控开关管，排除上下臂直通的情况，正常的导通组合有8种。定义各个各个桥臂开关的状态函数为𝑆x(x&#x3D;a,b,c)，数字1表示上桥臂导通，0表示下桥臂导通，通过欧姆定律可以很容易求出8种状态下的相电压与线电压值：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222161217903.png" srcset="/img/loading.gif" lazyload alt="image-20221222161217903"></p>
+<p>举例分析，(1, 0, 0)该状态下，A相桥上桥臂导通，B,C相下桥臂导通。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222165510174.png" srcset="/img/loading.gif" lazyload alt="image-20221222165510174"></p>
+<p>相电压：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222164632267.png" srcset="/img/loading.gif" lazyload alt="image-20221222164632267"></p>
+<p>线电压：</p>
+<img src="https://cdn.jsdelivr.net/gh/FlyCatWL/PicoGo@master/img/image-20221222165944965.png" srcset="/img/loading.gif" lazyload alt="image-20221222165944965" style="zoom: 50%;" />
+
+
+
+
+
+<h3 id="2-2扇区判断"><a href="#2-2扇区判断" class="headerlink" title="2.2扇区判断"></a>2.2扇区判断</h3><h3 id="2-3逆变切换时间"><a href="#2-3逆变切换时间" class="headerlink" title="2.3逆变切换时间"></a>2.3逆变切换时间</h3>
             </div>
             <hr>
             <div>
